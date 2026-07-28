@@ -1,0 +1,858 @@
+/* ==========================================
+            RESET
+========================================== */
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body{
+    min-height:100vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    overflow:hidden;
+    background:#02030a;
+    font-family:Arial, Helvetica, sans-serif;
+}
+
+/* ==========================================
+        STARS BACKGROUND
+========================================== */
+
+.stars{
+    position:fixed;
+    inset:0;
+
+    background-image:
+    radial-gradient(circle, white 1px, transparent 1px),
+    radial-gradient(circle, white 1px, transparent 1px),
+    radial-gradient(circle, white 1px, transparent 1px);
+
+    background-size:
+    160px 160px,
+    240px 240px,
+    320px 320px;
+
+    background-position:
+    0 0,
+    120px 70px,
+    250px 180px;
+
+    animation:twinkle 5s infinite alternate;
+}
+
+@keyframes twinkle{
+
+    from{
+        opacity:.45;
+    }
+
+    to{
+        opacity:1;
+    }
+
+}
+
+/* ==========================================
+              NEBULA
+========================================== */
+
+.nebula{
+
+    position:fixed;
+
+    inset:0;
+
+    pointer-events:none;
+
+    background:
+
+    radial-gradient(circle at 20% 30%,
+    rgba(128,0,255,.18),
+    transparent 35%),
+
+    radial-gradient(circle at 80% 20%,
+    rgba(0,120,255,.15),
+    transparent 35%),
+
+    radial-gradient(circle at 60% 80%,
+    rgba(255,0,140,.12),
+    transparent 35%);
+
+    filter:blur(70px);
+
+}
+
+/* ==========================================
+          SOLAR SYSTEM
+========================================== */
+
+.solar-system{
+
+    position:relative;
+
+    width:min(92vw,1000px);
+
+    aspect-ratio:1;
+
+}
+
+/* ==========================================
+                SUN
+========================================== */
+
+.sun{
+
+    position:absolute;
+
+    width:9%;
+
+    aspect-ratio:1;
+
+    border-radius:50%;
+
+    background:
+
+    radial-gradient(circle at 30% 30%,
+    #fff59d,
+    #ffd600 40%,
+    #ff9800 70%,
+    #ff6d00);
+
+    top:50%;
+
+    left:50%;
+
+    transform:translate(-50%,-50%);
+
+    animation:
+    sunGlow 3s infinite alternate;
+
+}
+
+@keyframes sunGlow{
+
+    from{
+
+        box-shadow:
+        0 0 20px yellow,
+        0 0 60px orange,
+        0 0 120px gold;
+
+    }
+
+    to{
+
+        box-shadow:
+        0 0 40px yellow,
+        0 0 90px orange,
+        0 0 180px gold,
+        0 0 250px orange;
+
+    }
+
+}
+
+/* ==========================================
+            ORBITS
+========================================== */
+
+.orbit{
+
+    position:absolute;
+
+    top:50%;
+
+    left:50%;
+
+    transform:translate(-50%,-50%);
+
+    border-radius:50%;
+
+    border:1px solid rgba(255,255,255,.08);
+
+}
+
+.planet{
+
+    position:absolute;
+
+    top:50%;
+
+    border-radius:50%;
+
+    transform:translateY(-50%);
+
+    transition:.4s;
+
+}
+
+/* Hover Effect */
+
+.planet:hover{
+
+    transform:
+    translateY(-50%)
+    scale(1.25);
+
+    cursor:pointer;
+
+}
+
+/* Planet Names */
+
+.planet::after{
+
+    content:attr(data-name);
+
+    position:absolute;
+
+    top:-28px;
+
+    left:50%;
+
+    transform:translateX(-50%);
+
+    color:white;
+
+    font-size:12px;
+
+    letter-spacing:1px;
+
+    opacity:0;
+
+    transition:.3s;
+
+    white-space:nowrap;
+
+}
+
+.planet:hover::after{
+
+    opacity:1;
+
+}
+
+/* ==========================================
+            ROTATION
+========================================== */
+
+@keyframes rotate{
+
+    from{
+
+        transform:
+        translate(-50%,-50%)
+        rotate(0deg);
+
+    }
+
+    to{
+
+        transform:
+        translate(-50%,-50%)
+        rotate(360deg);
+
+    }
+
+}
+
+/* ==========================================
+            MERCURY
+========================================== */
+
+.mercury-orbit{
+    width:16%;
+    aspect-ratio:1;
+    animation:rotate 5s linear infinite;
+}
+
+.mercury{
+    width:10px;
+    height:10px;
+    right:-5px;
+
+    background:
+    radial-gradient(circle at 30% 30%,
+    #f5f5f5,
+    #9e9e9e,
+    #5f5f5f);
+
+    box-shadow:0 0 8px #999;
+}
+
+/* ==========================================
+            VENUS
+========================================== */
+
+.venus-orbit{
+    width:24%;
+    aspect-ratio:1;
+    animation:rotate 8s linear infinite;
+}
+
+.venus{
+
+    width:18px;
+    height:18px;
+
+    right:-9px;
+
+    background:
+    radial-gradient(circle at 30% 30%,
+    #ffe082,
+    #f9a825,
+    #bf7b00);
+
+    box-shadow:
+    0 0 10px #ffb300;
+}
+
+/* ==========================================
+                EARTH
+========================================== */
+
+.earth-orbit{
+
+    width:34%;
+
+    aspect-ratio:1;
+
+    animation:rotate 12s linear infinite;
+
+}
+
+.earth{
+
+    width:24px;
+
+    height:24px;
+
+    right:-12px;
+
+    background:
+    radial-gradient(circle at 30% 30%,
+    #90caf9,
+    #1976d2 60%,
+    #0d47a1);
+
+    box-shadow:
+    0 0 12px #00b0ff,
+    0 0 25px #00b0ff;
+
+}
+
+/* ==========================================
+                MOON
+========================================== */
+
+.moon-orbit{
+
+    position:absolute;
+
+    width:48px;
+
+    height:48px;
+
+    top:50%;
+
+    left:50%;
+
+    transform:translate(-50%,-50%);
+
+    border-radius:50%;
+
+    border:1px solid rgba(255,255,255,.15);
+
+    animation:rotate 2.5s linear infinite;
+
+}
+
+.moon{
+
+    position:absolute;
+
+    width:6px;
+
+    height:6px;
+
+    border-radius:50%;
+
+    background:white;
+
+    top:50%;
+
+    right:-3px;
+
+    transform:translateY(-50%);
+
+    box-shadow:0 0 8px white;
+
+}
+
+/* ==========================================
+                MARS
+========================================== */
+
+.mars-orbit{
+
+    width:44%;
+
+    aspect-ratio:1;
+
+    animation:rotate 16s linear infinite;
+
+}
+
+.mars{
+
+    width:18px;
+
+    height:18px;
+
+    right:-9px;
+
+    background:
+    radial-gradient(circle at 30% 30%,
+    #ff8a65,
+    #d84315,
+    #6d1b00);
+
+    box-shadow:
+    0 0 12px #ff5722;
+
+}
+
+/* ==========================================
+                JUPITER
+========================================== */
+
+.jupiter-orbit{
+
+    width:58%;
+
+    aspect-ratio:1;
+
+    animation:rotate 22s linear infinite;
+
+}
+
+.jupiter{
+
+    width:54px;
+
+    height:54px;
+
+    right:-27px;
+
+    border-radius:50%;
+
+    background:
+    linear-gradient(
+    to bottom,
+
+    #f6d7b0 0%,
+
+    #d7a875 20%,
+
+    #f3d6b5 40%,
+
+    #bb8457 60%,
+
+    #f3d6b5 80%,
+
+    #9d603d 100%
+    );
+
+    box-shadow:
+
+    0 0 18px rgba(255,180,120,.5);
+
+}
+
+
+/* ==========================================
+                SATURN
+========================================== */
+
+.saturn-orbit{
+    width:72%;
+    aspect-ratio:1;
+    animation:rotate 28s linear infinite;
+}
+
+.saturn{
+
+    width:42px;
+    height:42px;
+
+    right:-21px;
+
+    border-radius:50%;
+
+    background:
+    linear-gradient(
+    to bottom,
+    #f7e2b4,
+    #d9b77c,
+    #f7e2b4,
+    #b88a54);
+
+    box-shadow:
+    0 0 15px rgba(255,220,150,.5);
+
+}
+
+/* Saturn Ring */
+
+.saturn::before{
+
+    content:"";
+
+    position:absolute;
+
+    width:70px;
+    height:18px;
+
+    border:3px solid #d7c08a;
+
+    border-radius:50%;
+
+    top:50%;
+    left:50%;
+
+    transform:
+    translate(-50%,-50%)
+    rotate(25deg);
+
+}
+
+/* ==========================================
+                URANUS
+========================================== */
+
+.uranus-orbit{
+
+    width:82%;
+
+    aspect-ratio:1;
+
+    animation:rotate 35s linear infinite;
+
+}
+
+.uranus{
+
+    width:30px;
+    height:30px;
+
+    right:-15px;
+
+    border-radius:50%;
+
+    background:
+    radial-gradient(circle at 30% 30%,
+    #c6ffff,
+    #6de7f0,
+    #1ba3b6);
+
+    box-shadow:
+    0 0 15px #6de7f0;
+
+}
+
+/* ==========================================
+                NEPTUNE
+========================================== */
+
+.neptune-orbit{
+
+    width:92%;
+
+    aspect-ratio:1;
+
+    animation:rotate 45s linear infinite;
+
+}
+
+.neptune{
+
+    width:30px;
+    height:30px;
+
+    right:-15px;
+
+    border-radius:50%;
+
+    background:
+    radial-gradient(circle at 30% 30%,
+    #80d8ff,
+    #2979ff,
+    #0d47a1);
+
+    box-shadow:
+    0 0 15px #448aff;
+
+}
+
+/* ==========================================
+            ASTEROID BELT
+========================================== */
+
+.asteroid-belt{
+
+    position:absolute;
+
+    width:51%;
+    aspect-ratio:1;
+
+    top:50%;
+    left:50%;
+
+    transform:translate(-50%,-50%);
+
+    border-radius:50%;
+
+    border:2px dotted rgba(255,255,255,.08);
+
+    animation:rotate 35s linear infinite;
+
+}
+
+/* ==========================================
+            SHOOTING STARS
+========================================== */
+
+.shooting-star{
+
+    position:fixed;
+
+    width:180px;
+
+    height:2px;
+
+    background:
+    linear-gradient(
+    to left,
+    white,
+    transparent);
+
+    transform:rotate(-45deg);
+
+    opacity:0;
+
+}
+
+.shooting-star1{
+
+    top:10%;
+    left:85%;
+
+    animation:shoot1 7s linear infinite;
+
+}
+
+.shooting-star2{
+
+    top:25%;
+    left:95%;
+
+    animation:shoot2 10s linear infinite;
+
+}
+
+.shooting-star3{
+
+    top:55%;
+    left:90%;
+
+    animation:shoot3 13s linear infinite;
+
+}
+
+@keyframes shoot1{
+
+0%,80%{
+
+opacity:0;
+
+transform:
+translate(0,0)
+rotate(-45deg);
+
+}
+
+100%{
+
+opacity:1;
+
+transform:
+translate(-900px,900px)
+rotate(-45deg);
+
+}
+
+}
+
+@keyframes shoot2{
+
+0%,75%{
+
+opacity:0;
+
+transform:
+translate(0,0)
+rotate(-45deg);
+
+}
+
+100%{
+
+opacity:1;
+
+transform:
+translate(-1000px,800px)
+rotate(-45deg);
+
+}
+
+}
+
+@keyframes shoot3{
+
+0%,85%{
+
+opacity:0;
+
+transform:
+translate(0,0)
+rotate(-45deg);
+
+}
+
+100%{
+
+opacity:1;
+
+transform:
+translate(-800px,700px)
+rotate(-45deg);
+
+}
+
+}
+
+/* ==========================================
+        RESPONSIVE
+========================================== */
+
+@media(max-width:900px){
+
+.sun{
+
+width:11%;
+
+}
+
+.jupiter{
+
+width:42px;
+height:42px;
+right:-21px;
+
+}
+
+.saturn{
+
+width:36px;
+height:36px;
+right:-18px;
+
+}
+
+.uranus,
+.neptune{
+
+width:24px;
+height:24px;
+right:-12px;
+
+}
+
+}
+
+@media(max-width:600px){
+
+.sun{
+
+width:12%;
+
+}
+
+.mercury{
+
+width:7px;
+height:7px;
+right:-3.5px;
+
+}
+
+.venus{
+
+width:12px;
+height:12px;
+right:-6px;
+
+}
+
+.earth,
+.mars{
+
+width:16px;
+height:16px;
+right:-8px;
+
+}
+
+.jupiter{
+
+width:30px;
+height:30px;
+right:-15px;
+
+}
+
+.saturn{
+
+width:26px;
+height:26px;
+right:-13px;
+
+}
+
+}
+
+/* ==========================================
+        SMOOTH HOVER
+========================================== */
+
+.planet{
+
+transition:
+transform .4s,
+box-shadow .4s;
+
+}
+
+.planet:hover{
+
+transform:
+translateY(-50%)
+scale(1.35);
+
+filter:brightness(1.25);
+
+}
