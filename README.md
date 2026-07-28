@@ -4,7 +4,7 @@ A beautiful animated Solar System built using only HTML and CSS.
 
 ## 🚀 Live Demo
 
-https://YOUR_USERNAME.github.io/Solar-System/
+https://kaurmoni0013.github.io/Solar-System/
 
 ---
 
