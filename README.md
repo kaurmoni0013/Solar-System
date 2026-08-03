@@ -25,7 +25,7 @@ https://kaurmoni0013.github.io/Solar-System/
 
 ## 📷 Preview
 
-![Preview](assets/preview.png)
+![Preview](image.png)
 
 ---
 
