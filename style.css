@@ -70,6 +70,16 @@ body{
 
 }
 
+/* Pause all motion while inspecting a planet */
+
+body.paused *,
+body.paused *::before,
+body.paused *::after{
+
+    animation-play-state:paused !important;
+
+}
+
 /* ==========================================
               NEBULA
 ========================================== */

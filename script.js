@@ -164,6 +164,22 @@
 
   render();
 
+  // Pause all motion while inspecting a planet; resume when pointer leaves it
+  var pauseAll = function () {
+    document.body.classList.add('paused');
+  };
+  var resumeAll = function () {
+    document.body.classList.remove('paused');
+  };
+  var planets = document.querySelectorAll('.planet');
+  for (var k = 0; k < planets.length; k++) {
+    planets[k].addEventListener('click', pauseAll);
+    planets[k].addEventListener('mouseleave', resumeAll);
+  }
+  document.addEventListener('pointerdown', function (e) {
+    if (e.target.closest && !e.target.closest('.planet')) resumeAll();
+  });
+
   window.addEventListener('beforeunload', function () {
     window.removeEventListener('resize', handleResize);
     cancelAnimationFrame(animationFrameId);
