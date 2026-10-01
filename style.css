@@ -238,7 +238,8 @@ body.paused *::after{
 
 }
 
-.planet::after{
+.planet::after,
+.sun::after{
 
     content:attr(data-name) "\A" attr(data-info);
 
@@ -284,9 +285,20 @@ body.paused *::after{
 
 }
 
-.planet:hover::after{
+.planet:hover::after,
+.sun:hover::after{
 
     opacity:1;
+
+}
+
+.sun:hover{
+
+    transform:
+    translate(-50%,-50%)
+    scale(1.2);
+
+    cursor:pointer;
 
 }
 

@@ -164,20 +164,40 @@
 
   render();
 
-  // Pause all motion while inspecting a planet; resume when pointer leaves it
-  var pauseAll = function () {
+  // Pause motion while inspecting a planet or the sun; resume only when the
+  // pointer moves well away (beyond the tooltip area)
+  var inspectX = 0;
+  var inspectY = 0;
+  var INSPECT_RADIUS = 160;
+  var TARGETS = '.planet, .sun';
+  var targets = document.querySelectorAll(TARGETS);
+
+  var anchorInspect = function (el) {
+    var b = el.getBoundingClientRect();
+    inspectX = b.left + b.width / 2;
+    inspectY = b.top + b.height / 2;
     document.body.classList.add('paused');
   };
-  var resumeAll = function () {
-    document.body.classList.remove('paused');
-  };
-  var planets = document.querySelectorAll('.planet');
-  for (var k = 0; k < planets.length; k++) {
-    planets[k].addEventListener('click', pauseAll);
-    planets[k].addEventListener('mouseleave', resumeAll);
+
+  for (var k = 0; k < targets.length; k++) {
+    targets[k].addEventListener('pointerdown', function () {
+      anchorInspect(this);
+    });
   }
+
+  document.addEventListener('pointermove', function (e) {
+    if (!document.body.classList.contains('paused')) return;
+    var dx = e.clientX - inspectX;
+    var dy = e.clientY - inspectY;
+    if (dx * dx + dy * dy > INSPECT_RADIUS * INSPECT_RADIUS) {
+      document.body.classList.remove('paused');
+    }
+  });
+
   document.addEventListener('pointerdown', function (e) {
-    if (e.target.closest && !e.target.closest('.planet')) resumeAll();
+    if (e.target.closest && !e.target.closest(TARGETS)) {
+      document.body.classList.remove('paused');
+    }
   });
 
   window.addEventListener('beforeunload', function () {
